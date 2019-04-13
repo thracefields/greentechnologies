@@ -34,5 +34,6 @@
 
     <!-- Scripts -->
     @include('layouts.includes.js-body')
+
 </body>
 </html>
