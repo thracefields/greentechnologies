@@ -26,6 +26,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Начало</a>
             </li>
+            @auth
+               @if (Auth::user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/login') }}">Админ</a>
+                </li> 
+               @endif 
+            @endif
             @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/login') }}">Вход</a>
