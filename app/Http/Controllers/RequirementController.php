@@ -8,31 +8,19 @@ use Session;
 use Auth;
 use \Carbon\Carbon;
 
-use App\Station;
-use App\Indicator;
 use App\Requirement;
 
-
-class IndicatorController extends Controller
+class RequirementController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         $requirements = Requirement::all();
-        $station = Station::findOrFail($id);
-        $indicators = Indicator::where('station_id', $id)->whereDate('created_at', Carbon::today())->get();
-        return view('indicators.index')->withIndicators($indicators)->withStation($station)->withRequirements($requirements);
-    }
-
-    public function sort($id, $date)
-    {
-        $station = Station::findOrFail($id);
-        $indicators = Indicator::where('station_id', $id)->whereDate('created_at', $date)->get();
-        return view('indicators.sort')->withIndicators($indicators)->withStation($station)->withDate($date);
+        return view('requirements.index')->withRequirements($requirements);
     }
 
     /**
@@ -42,8 +30,7 @@ class IndicatorController extends Controller
      */
     public function create()
     {
-        $stations = Station::all();
-        return view('indicators.create')->withStations($stations);
+        return view('requirements.create');
     }
 
     /**
@@ -55,7 +42,7 @@ class IndicatorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'station' => 'required',
+            'name' => 'required',
             'humidity'=> 'required|numeric|min:0|max:100',
             'temperature'=> 'required|numeric',
             'wind'=> 'required|numeric|min:0',
@@ -63,19 +50,19 @@ class IndicatorController extends Controller
             'pressure'=> 'required|numeric|min:0'
         ]);
 
-        $indicator = new Indicator;
-        $indicator->station_id = $request->station;
-        $indicator->humidity = $request->humidity;
-        $indicator->temperature = $request->temperature;
-        $indicator->wind = $request->wind;
-        $indicator->wind_direction = $request->wind_direction;
-        $indicator->pressure = $request->pressure;
+        $requirement = new Requirement;
+        $requirement->name = $request->name;
+        $requirement->humidity = $request->humidity;
+        $requirement->temperature = $request->temperature;
+        $requirement->wind = $request->wind;
+        $requirement->wind_direction = $request->wind_direction;
+        $requirement->pressure = $request->pressure;
 
-        $indicator->save();
+        $requirement->save();
 
-        Session::flash('success', 'Успешно добавихте данни от станция!');
+        Session::flash('success', 'Успешно добавихте данни за земеделска култура!');
 
-        return redirect()->route('stations.index');
+        return redirect()->route('requirements.index');
     }
 
     /**

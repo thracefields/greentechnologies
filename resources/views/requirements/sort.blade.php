@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <p>Измервания от днес</p>
+                    <p>Измервания от {{ $date }}</p>
                     <p class="alert alert-info">
                         <strong>Метеорологична станция: </strong> {{ $station->name }}
                     </p>
@@ -38,33 +38,7 @@
                 @endforeach
             </tbody>
         </table>
-        @foreach ($requirements as $requirement)
-            <p class="alert alert-info">{{ $requirement->name }}</p>
-            Влажност
-            @if($indicators->sum('humidity') > $requirement->humidity)
-            <p class="alert alert-success">Културата е запасена с влажност и ще се развива добре.</p>
-            @else
-            <p class="alert alert-danger">
-                Не достига влага и се очаква културата да загине, ако не се полее.
-            </p>
-            @endif
-            Температура
-            @if($indicators->sum('temperature') > $requirement->temperature)
-            <p class="alert alert-success">Културата се развива на умерена температура, но не трябва да се повишава много.</p>
-            @else
-            <p class="alert alert-danger">
-                Температура е много ниска и културата може да загине.
-            </p>
-            @endif
-            @if($indicators->sum('wind') > $requirement->wind)
-            <p class="alert alert-success">Вятърът не е силен и се понася добре от културата.</p>
-            @else
-            <p class="alert alert-danger">
-                Много силен вятър. Може да компорметира реколтата.
-            </p>
-            @endif
-        @endforeach
     @else
-        <p class="alert alert-info">Все още няма направени измервания днес!</p>
+        <p class="alert alert-info">Няма направени измервания на тази дата!</p>
     @endif
 @endsection
