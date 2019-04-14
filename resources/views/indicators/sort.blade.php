@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <p>Измервания от днес</p>
+                    <p>Измервания от {{ $date }}</p>
                     <p class="alert alert-info">
                         <strong>Метеорологична станция: </strong> {{ $station->name }}
                     </p>
@@ -39,6 +39,6 @@
             </tbody>
         </table>
     @else
-        <p class="alert aler-info">Все още няма направени измервания днес!</p>
+        <p class="alert alert-info">Няма направени измервания на тази дата!</p>
     @endif
 @endsection

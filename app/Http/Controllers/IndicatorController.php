@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Session;
 use Auth;
+use \Carbon\Carbon;
 
 use App\Station;
 use App\Indicator;
@@ -17,10 +18,18 @@ class IndicatorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $indicators = Indicator::paginate(20);
-        return view('indicators.index')->withIndicators($indicators);
+        $station = Station::findOrFail($id);
+        $indicators = Indicator::where('station_id', $id)->whereDate('created_at', Carbon::today())->get();
+        return view('indicators.index')->withIndicators($indicators)->withStation($station);
+    }
+
+    public function sort($id, $date)
+    {
+        $station = Station::findOrFail($id);
+        $indicators = Indicator::where('station_id', $id)->whereDate('created_at', $date)->get();
+        return view('indicators.sort')->withIndicators($indicators)->withStation($station)->withDate($date);
     }
 
     /**

@@ -8,18 +8,10 @@ body {
   background-color: #006400;
 }
 
-header {
-  min-height: 300px;
-}
-
 #main-nav {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #478519;
-}
-
-#main-nav a {
-  color: #fff;
 }
 
 #main-nav .nav-link:hover {

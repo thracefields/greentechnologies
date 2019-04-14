@@ -12,6 +12,8 @@
                     <i class="fas fa-user"></i> {{ mb_strlen(Auth::user()->name) >= 30 ? mb_substr(Auth::user()->name, 0, 30) . '...' : Auth::user()->name}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" class="text-dark" href="{{ route('stations.create') }}">Добави станция</a>
+                    <a class="dropdown-item" class="text-dark" href="{{ route('indicators.create') }}">Добави измервания</a>
                     <a class="dropdown-item">
                         <form action="{{ url('/logout') }}" method="POST">
                             @csrf
@@ -22,21 +24,26 @@
             </div>
             @endauth
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Начало</a>
+                <a class="nav-link text-white" href="{{ url('/') }}"><i class="fas fa-home"></i> Начало</a>
             </li>
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('stations.index') }}">Метеорологични станции</a>
+                </li>
+            @endauth
             @auth
                @if (Auth::user()->isAdmin())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/login') }}">Админ</a>
+                    <a class="nav-link text-white" href="{{ url('/login') }}">Админ</a>
                 </li> 
                @endif 
             @endif
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/login') }}"><i class="fas fa-sign-in-alt"></i> Влез</a>
+                <a class="nav-link text-white" href="{{ url('/login') }}"><i class="fas fa-sign-in-alt"></i> Влез</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/register') }}"><i class="fas fa-user-plus"></i> Регистрирай се</a>
+                <a class="nav-link text-white" href="{{ url('/register') }}"><i class="fas fa-user-plus"></i> Регистрирай се</a>
             </li>
             @endguest
         </ul>

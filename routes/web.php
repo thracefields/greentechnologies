@@ -20,4 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/stations', 'StationController');
-Route::resource('/indicators', 'IndicatorController');
+
+Route::get('/indicators/{station_id}/today', 'IndicatorController@index')->name('indicators.index');
+Route::get('/indicators/{station_id}/{date}', 'IndicatorController@sort')->name('indicators.sort');
+Route::resource('/indicators', 'IndicatorController')->except(['index']);
