@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="main-nav" class="navbar navbar-expand-lg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,24 +7,22 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             @auth
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">{{ mb_strlen(Auth::user()->name) >= 30 ? mb_substr(Auth::user()->name, 0, 30) . '...' : Auth::user()->name}}</a>
+            <div class="nav-item dropdown">
+                <button class="btn green-accent-color-1 text-white dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i> {{ mb_strlen(Auth::user()->name) >= 30 ? mb_substr(Auth::user()->name, 0, 30) . '...' : Auth::user()->name}}
+                </button>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item">
                         <form action="{{ url('/logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-block btn-danger">Излез</button>
+                            <button type="submit" class="text-dark border-0 bg-white">Излез</button>
                         </form>
                     </a>
                 </div>
-            </li>
+            </div>
             @endauth
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Начало</a>
+                <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Начало</a>
             </li>
             @auth
                @if (Auth::user()->isAdmin())
@@ -35,10 +33,10 @@
             @endif
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/login') }}">Вход</a>
+                <a class="nav-link" href="{{ url('/login') }}"><i class="fas fa-sign-in-alt"></i> Влез</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/register') }}">Регистрация</a>
+                <a class="nav-link" href="{{ url('/register') }}"><i class="fas fa-user-plus"></i> Регистрирай се</a>
             </li>
             @endguest
         </ul>

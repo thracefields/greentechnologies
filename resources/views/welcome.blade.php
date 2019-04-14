@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo vel laudantium explicabo odio commodi autem ipsa animi minima rerum iste natus iure sequi vitae, libero vero dolorum possimus ducimus nostrum?
+    <p>В днешно време по света има множество поставени метеорологични станции, които водят статистика за различните показатели на времето като влажност, температура, вятък и посока, налягане и слънцегреене. С тези данни могат да се правят агропрогнози, така че да се отчита влиянието на времето и климата върху земеделието.</p>
+    <p>Чрез приложението потребителят може да подготви за стихиите на времето и според тях да планира своятa работа в градината или на полето.</p>
 @endsection
 
