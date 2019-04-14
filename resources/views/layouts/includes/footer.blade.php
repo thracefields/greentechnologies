@@ -1,3 +1,3 @@
 <footer>
-    <strong class="text-white">{{ config('app.name', 'Laravel') }} {{ date('Y') }}</strong>
+    <p class="text-white">{{ config('app.name', 'Laravel') }} {{ date('Y') }}</p>
 </footer>

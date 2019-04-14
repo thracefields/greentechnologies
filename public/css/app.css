@@ -1,5 +1,15 @@
 body {
   font-size: 18px;
+  box-shadow: 0 2px 80px yellowgreen inset;
+  background-color: #fff;
+}
+
+.green-accent-color-1 {
+  background-color: #006400;
+}
+
+header {
+  min-height: 300px;
 }
 
 #main-nav {
@@ -14,10 +24,6 @@ body {
 
 #main-nav .nav-link:hover {
   opacity: 0.6;
-}
-
-.green-accent-color-1 {
-  background-color: #006400;
 }
 
 footer {

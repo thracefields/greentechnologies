@@ -8,7 +8,7 @@
             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-12 col-md-4 control-label">Име</label>
+                            <label for="name">Име</label>
 
                             <div class="col-12 col-md-8">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -19,8 +19,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-12 col-md-4 control-label">Имейл</label>
+                        <div class="form-group">
+                            <label for="email">Имейл</label>
 
                             <div class="col-12 col-md-8">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -31,8 +31,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-12 col-md-4 control-label">Парола</label>
+                        <div class="form-group">
+                            <label for="password">Парола</label>
 
                             <div class="col-12 col-md-8">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-12 col-md-4 control-label">Повторете паролата</label>
+                            <label for="password-confirm">Повторете паролата</label>
 
                             <div class="col-12 col-md-8">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
