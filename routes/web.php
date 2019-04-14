@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/stations', 'StationController');
+Route::resource('/indicators', 'IndicatorController');
